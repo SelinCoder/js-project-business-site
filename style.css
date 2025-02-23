@@ -376,9 +376,9 @@ footer {
 
 @media (max-width: 480px) {
   .radio-group {
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
   }
 }
   
