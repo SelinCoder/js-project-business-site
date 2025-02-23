@@ -5,58 +5,70 @@ document.addEventListener("DOMContentLoaded", function () {
 
   menuToggle.addEventListener("click", function () {
     navLinks.classList.toggle("show");
+    if (navLinks.classList.contains("show")) {
+      menuToggle.textContent = "✖";
+    } else {
+      menuToggle.textContent = "☰";
+    }
   });
 
- 
   const form = document.getElementById("contactForm");
   if (form) {
     const nameInput = document.getElementById("name");
     const emailInput = document.getElementById("Email");
     const emailError = document.getElementById("emailError");
 
-    
     const thankModal = document.getElementById("thankModal");
     const userNameSpan = document.getElementById("userName");
     const closeModalBtn = document.getElementById("closeModal");
 
     form.addEventListener("submit", function(event) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const checkboxes = document.querySelectorAll('input[name="robot_interest"]');
+      const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
 
-    
-    const checkboxes = document.querySelectorAll('input[name="robot_interest"]');
-    const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-
-    
-  if (!emailPattern.test(emailInput.value)) {
-      event.preventDefault();
-      emailError.textContent = "Var vänlig ange en giltig e-postadress.";
-      emailError.style.display = "block";
-      return; 
+      if (!emailPattern.test(emailInput.value)) {
+        event.preventDefault();
+        emailError.textContent = "Var vänlig ange en giltig e-postadress.";
+        emailError.style.display = "block";
+        return; 
       } else {
-      emailError.style.display = "none";
+        emailError.style.display = "none";
       }
 
-      
-  if (!isChecked) {
-      event.preventDefault();
-      alert("Choose one robot that you are interested in.");
-      return;
+      if (!isChecked) {
+        event.preventDefault();
+        alert("Choose one robot that you are interested in.");
+        return;
       }
-
       
       event.preventDefault(); // Hindra standard-submit så vi kan visa modalen först
       userNameSpan.textContent = nameInput.value; // Sätt in användarens namn i modalen
       thankModal.style.display = "block";
     });
 
-    
-  if (closeModalBtn) {
-     closeModalBtn.addEventListener("click", function() {
-       
-     thankModal.style.display = "none";
-    
-        
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener("click", function() {
+        thankModal.style.display = "none";
       });
     }
   }
+  
+  // Scroll-to-Top Button: Skapar knappen och hanterar visning & klick
+  const scrollBtn = document.createElement("button");
+  scrollBtn.textContent = "↑ Top";
+  scrollBtn.classList.add("scroll-to-top");
+  document.body.appendChild(scrollBtn);
+
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 300) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 });
