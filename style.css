@@ -63,10 +63,28 @@ body {
   font-size: 0.9em;
 }
 
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .nav-links {
   list-style: none;
   display: flex;
   gap: 15px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.nav-links.show {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideIn 0.3s forwards;
 }
 
 .nav-links a {
@@ -341,6 +359,13 @@ body {
   background-color: var(--form-color);
   animation: pulse-soft 0.6s ease-in-out infinite alternate;
 }
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px var(--accent-color);
+  outline: none;
+}
+
 @keyframes pulse-soft {
   0% {
     transform: scale(1);
@@ -348,6 +373,30 @@ body {
   100% {
     transform: scale(1.05);
   }
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav-links {
+  /* Befintlig styling för .nav-links */
+  /* Du kan behålla dina övriga regler, lägg bara till följande: */
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.nav-links.show {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideIn 0.3s forwards;
 }
 
 
