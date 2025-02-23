@@ -281,11 +281,12 @@ body {
   max-width: 400px;
 }
 
+
 .radio-group {
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
   gap: 5px;
-  overflow-x: auto;
+  margin-bottom: 1rem;
 }
 
 .radio-group label {
@@ -296,7 +297,8 @@ body {
 }
 
 .radio-group input[type="radio"] {
-  margin-right: 5px;
+  width: 10px;
+  height: 10px;
 }
 
 .checkbox-group {
