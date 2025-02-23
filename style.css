@@ -284,14 +284,14 @@ body {
 .radio-group {
   display: flex;
   flex-wrap: nowrap;
-  gap: 20px;
+  gap: 5px;
   overflow-x: auto;
 }
 
 .radio-group label {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0px; /* ändrade till 0 ist för 5px */
   flex-shrink: 0;
 }
 
@@ -383,9 +383,9 @@ footer {
 /* NEW: Override to keep radio inputs and their labels aligned in one row even on small screens */
 @media (max-width: 480px) {
   .radio-group {
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
   }
 }
   
