@@ -14,13 +14,11 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: Arial, sans-serif;
   background-color: #fff;
   color: #333;
 }
-
 
 .site-header {
   background-color: var(--primary-color);
@@ -73,6 +71,8 @@ body {
     transform: translateX(0);
   }
 }
+
+/* Nav-links - standard: dolda */
 .nav-links {
   list-style: none;
   display: flex;
@@ -81,6 +81,7 @@ body {
   transform: translateX(100%);
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
+
 .nav-links.show {
   opacity: 1;
   transform: translateX(0);
@@ -93,6 +94,15 @@ body {
   font-size: 1em;
 }
 
+/* Säkerställ att nav-links visas på breda skärmar */
+@media (min-width: 769px) {
+  .nav-links {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    display: flex !important;
+  }
+}
+
 .menu-toggle {
   display: none;
   background: none;
@@ -101,7 +111,6 @@ body {
   color: var(--text-color);
   cursor: pointer;
 }
-
 
 .hero-video-container {
   position: relative;
@@ -167,7 +176,6 @@ body {
   }
 }
 
-
 .grayscale-button {
   padding: 12px 24px;
   font-size: 1.2em;
@@ -192,7 +200,6 @@ body {
   }
 }
 
-
 .products {
   padding: 50px 20px;
   text-align: center;
@@ -213,7 +220,7 @@ body {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
+  
   .logo { 
     display: flex;
   }
@@ -249,13 +256,11 @@ body {
   }
 }
 
-
 .about {
   text-align: center;
   padding: 50px 20px;
   background-color: #fefefe;
 }
-
 
 .contact-section {
   display: flex;
@@ -285,7 +290,6 @@ body {
   gap: 15px;
   width: 100%;
 }
-
 .contact-form label {
   font-weight: bold;
 }
@@ -299,26 +303,32 @@ body {
   max-width: 400px;
 }
 
+/* Fokus-effekt för input, textarea och select */
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px var(--accent-color);
+  outline: none;
+}
 
+/* Radio group */
 .radio-group {
   display: flex;
   flex-direction: column;
   gap: 5px;
   margin-bottom: 1rem;
 }
-
 .radio-group label {
   display: flex;
   align-items: center;
   gap: 2px;
   flex-shrink: 0;
 }
-
 .radio-group input[type="radio"] {
   width: 10px;
   height: 10px;
 }
 
+/* Checkbox group */
 .checkbox-group {
   display: flex;
   flex-direction: column;
@@ -344,7 +354,7 @@ body {
   height: 20px;
 }
 
-
+/* Contact form button */
 .contact-form button {
   padding: 12px 24px;
   font-size: 1em;
@@ -360,86 +370,15 @@ body {
   animation: pulse-soft 0.6s ease-in-out infinite alternate;
 }
 
-input:focus, textarea:focus, select:focus {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 5px var(--accent-color);
-  outline: none;
-}
-
-@keyframes pulse-soft {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
-}
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.nav-links {
-  /* Befintlig styling för .nav-links */
-  /* Du kan behålla dina övriga regler, lägg bara till följande: */
-  opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
-
-.nav-links.show {
-  opacity: 1;
-  transform: translateX(0);
-  animation: slideIn 0.3s forwards;
-}
-
-
-footer {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 0.9em;
-}
-
-
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .menu-toggle {
-    display: block;
-  }
-  .nav-links.show {
-    display: flex;
-  }
-}
-
-@media (max-width: 480px) {
-  .radio-group {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-}
-  
 .modal {
-  display: none; 
+  display: none; /* dold som standard */
   position: fixed;
-  z-index: 999; 
+  z-index: 999; /* över allt annat */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5); 
+  background-color: rgba(0,0,0,0.5); /* halvtransparent bakgrund */
 }
 
 .modal-content {
@@ -471,6 +410,51 @@ footer {
 #closeModal:hover {
   background-color: #1c86ee;
 }
+
+
+@keyframes pulse-soft {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* Footer */
+footer {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9em;
+}
+
+/* Media query för små skärmar */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+/* Media query för narrow screens */
+@media (max-width: 480px) {
+  .radio-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+/* Scroll-to-top-knapp */
 .scroll-to-top {
   position: fixed;
   bottom: 20px;
