@@ -1,4 +1,3 @@
-
 :root {
   --primary-color: #444;
   --secondary-color: #333;
@@ -51,7 +50,7 @@ body {
 .logo {
   display: none;
   flex-direction: column;
-  align-items: center ;
+  align-items: center;
 }
 
 .logo h1 {
@@ -197,10 +196,9 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
-
-.logo { 
-  display: flex;
-}
+  .logo { 
+    display: flex;
+  }
 }
 @media (min-width: 1024px) {
   .product-grid {
@@ -293,10 +291,9 @@ body {
 .radio-group label {
   display: flex;
   align-items: center;
-  gap: 5px;           
-  flex-shrink: 0;     
+  gap: 5px;
+  flex-shrink: 0;
 }
-
 
 .radio-group input[type="radio"] {
   margin-right: 5px;
@@ -376,13 +373,22 @@ footer {
 }
 
 @media (max-width: 480px) {
+  /* Original media query (kept intact) */
   .radio-group {
     flex-direction: column;
     align-items: flex-start;
   }
 }
 
-
+/* NEW: Override to keep radio inputs and their labels aligned in one row even on small screens */
+@media (max-width: 480px) {
+  .radio-group {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+  }
+}
+  
 .modal {
   display: none; 
   position: fixed;
@@ -434,7 +440,7 @@ footer {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: none; 
+  display: none;
   z-index: 1000;
   transition: opacity 0.3s;
 }
