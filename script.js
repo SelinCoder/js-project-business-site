@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!emailPattern.test(emailInput.value)) {
         event.preventDefault();
-        emailError.textContent = "Var vänlig ange en giltig e-postadress.";
+        emailError.textContent = "Please enter a valid email address.";
         emailError.style.display = "block";
         return; 
       } else {
@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
       
-      event.preventDefault(); // Hindra standard-submit så vi kan visa modalen först
-      userNameSpan.textContent = nameInput.value; // Sätt in användarens namn i modalen
+      event.preventDefault(); 
+      userNameSpan.textContent = nameInput.value; 
       thankModal.style.display = "block";
     });
 
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   
-  // Scroll-to-Top Button: Skapar knappen och hanterar visning & klick
+  
   const scrollBtn = document.createElement("button");
   scrollBtn.textContent = "↑ Top";
   scrollBtn.classList.add("scroll-to-top");
