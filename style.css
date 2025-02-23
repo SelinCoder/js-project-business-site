@@ -374,6 +374,13 @@ footer {
   }
 }
 
+@media (max-width: 480px) {
+  .radio-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 
 .modal {
   display: none; 
