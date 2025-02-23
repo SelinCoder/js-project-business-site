@@ -292,9 +292,11 @@ body {
 }
 
 .radio-group label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 10px;;
+
 }
 
 .radio-group input[type="radio"] {
