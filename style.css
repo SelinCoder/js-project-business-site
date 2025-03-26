@@ -20,87 +20,39 @@ body {
   color: #333;
 }
 
+
 .site-header {
   background-color: var(--primary-color);
   color: var(--text-color);
   padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  gap: 10px;
 }
 
 .header-image {
   max-width: 60px;
   border-radius: 50%;
   box-shadow: var(--box-shadow);
+  flex-shrink: 0;
 }
+
 
 .navbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 20px;
-}
-
-.logo {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-}
-
-.logo h1 {
-  margin: 0;
-  font-size: 1.5em;
-}
-
-.logo p {
-  margin: 0;
-  font-size: 0.9em;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Nav-links - standard: dolda */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
-
-.nav-links.show {
-  opacity: 1;
-  transform: translateX(0);
-  animation: slideIn 0.3s forwards;
-}
-
-.nav-links a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-size: 1em;
-}
-
-/* Säkerställ att nav-links visas på breda skärmar */
-@media (min-width: 769px) {
-  .nav-links {
-    opacity: 1 !important;
-    transform: translateX(0) !important;
-    display: flex !important;
-  }
 }
 
 .menu-toggle {
@@ -112,32 +64,83 @@ body {
   cursor: pointer;
 }
 
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.nav-links.show {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideIn 0.3s forwards;
+}
+
+@media (min-width: 769px) {
+  .nav-links {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    display: flex !important;
+  }
+}
+
+
+.logo {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo h1 {
+  font-size: 1.5em;
+}
+
+.logo p {
+  font-size: 0.9em;
+}
+
+@media (min-width: 600px) {
+  .logo {
+    display: flex;
+  }
+}
+
+
 .hero-video-container {
   position: relative;
-  min-height: 100vh; 
+  min-height: 100vh;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
+.hero-video,
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+}
+
+.hero-video {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 
@@ -156,7 +159,7 @@ body {
 }
 
 .hero-content h3 {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: 19px, 24px, 29px;
   margin-bottom: 30px;
 }
 
@@ -165,40 +168,6 @@ body {
   opacity: 0;
 }
 
-@keyframes fadeInSlideHero {
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.grayscale-button {
-  padding: 12px 24px;
-  font-size: 1.2em;
-  background: linear-gradient(135deg, #b0b0b0, #d4d4d4);
-  color: #333;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.grayscale-button:hover {
-  animation: pulse-strong 0.6s ease-in-out infinite alternate;
-}
-
-@keyframes pulse-strong {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
-}
 
 .products {
   padding: 50px 20px;
@@ -220,11 +189,8 @@ body {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  .logo { 
-    display: flex;
-  }
 }
+
 @media (min-width: 1024px) {
   .product-grid {
     grid-template-columns: repeat(4, 1fr);
@@ -242,25 +208,23 @@ body {
   opacity: 0;
   animation: fadeInCards 1s forwards;
 }
+
 .product-card img {
   width: 100%;
-  display: block;
   margin-bottom: 10px;
 }
+
 .product-card:hover {
   transform: scale(1.05);
 }
-@keyframes fadeInCards {
-  to {
-    opacity: 1;
-  }
-}
+
 
 .about {
   text-align: center;
   padding: 50px 20px;
   background-color: #fefefe;
 }
+
 
 .contact-section {
   display: flex;
@@ -284,80 +248,80 @@ body {
   width: 100%;
   max-width: 500px;
 }
+
 .contact-form form {
   display: flex;
   flex-direction: column;
   gap: 15px;
   width: 100%;
 }
+
 .contact-form label {
   font-weight: bold;
 }
+
 .contact-form input,
 .contact-form select {
   padding: 10px;
-  font-size: 1em;
+  font-size: 16px;
   border-radius: 8px;
   border: 1px solid #ccc;
   width: 100%;
   max-width: 400px;
 }
 
-/* Fokus-effekt för input, textarea och select */
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   border-color: var(--accent-color);
   box-shadow: 0 0 5px var(--accent-color);
   outline: none;
 }
 
-/* Radio group */
-.radio-group {
+
+.radio-group,
+.checkbox-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-bottom: 1rem;
+  gap: 10px;
+  margin-bottom: 16px;
 }
-.radio-group label {
+
+.radio-group label,
+.checkbox-label {
   display: flex;
   align-items: center;
-  gap: 2px;
-  flex-shrink: 0;
+  gap: 8px;
 }
+
 .radio-group input[type="radio"] {
   width: 10px;
   height: 10px;
 }
 
-/* Checkbox group */
-.checkbox-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 1rem;
-}
 .checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
   background-color: #f8f8f8;
   border-radius: 8px;
   padding: 8px 12px;
+  cursor: pointer;
   transition: background 0.2s;
 }
+
 .checkbox-label:hover {
   background-color: #eee;
 }
+
 .checkbox-label input[type="checkbox"] {
   accent-color: var(--form-color);
   width: 20px;
   height: 20px;
 }
 
-/* Contact form button */
-.contact-form button {
+
+.contact-form button,
+#closeModal {
   padding: 12px 24px;
-  font-size: 1em;
+  font-size: 16px;
   background-color: var(--form-color);
   color: var(--text-color);
   border: none;
@@ -365,20 +329,36 @@ input:focus, textarea:focus, select:focus {
   cursor: pointer;
   transition: background 0.3s;
 }
-.contact-form button:hover {
-  background-color: var(--form-color);
+
+.contact-form button:hover,
+#closeModal:hover {
+  background-color: #1c86ee;
   animation: pulse-soft 0.6s ease-in-out infinite alternate;
 }
 
+.grayscale-button {
+  padding: 12px 24px;
+  font-size: 1.2em;
+  background: linear-gradient(135deg, #b0b0b0, #d4d4d4);
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.grayscale-button:hover {
+  animation: pulse-strong 0.6s ease-in-out infinite alternate;
+}
+
+
 .modal {
-  display: none; /* dold som standard */
+  display: none;
   position: fixed;
-  z-index: 999; /* över allt annat */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5); /* halvtransparent bakgrund */
+  z-index: 999;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
@@ -388,8 +368,7 @@ input:focus, textarea:focus, select:focus {
   border-radius: 10px;
   max-width: 400px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .thank-gif {
@@ -398,30 +377,7 @@ input:focus, textarea:focus, select:focus {
   margin-bottom: 20px;
 }
 
-#closeModal {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #1e90ff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-#closeModal:hover {
-  background-color: #1c86ee;
-}
 
-
-@keyframes pulse-soft {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
-}
-
-/* Footer */
 footer {
   background-color: var(--secondary-color);
   color: var(--text-color);
@@ -430,31 +386,6 @@ footer {
   font-size: 0.9em;
 }
 
-/* Media query för små skärmar */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .menu-toggle {
-    display: block;
-  }
-  .nav-links.show {
-    display: flex;
-  }
-}
-
-/* Media query för narrow screens */
-@media (max-width: 480px) {
-  .radio-group {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-}
-
-/* Scroll-to-top-knapp */
 .scroll-to-top {
   position: fixed;
   bottom: 20px;
@@ -469,4 +400,78 @@ footer {
   display: none;
   z-index: 1000;
   transition: opacity 0.3s;
+}
+
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links.show {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;    
+  }
+}
+
+@media (max-width: 480px) {
+  .radio-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInSlideHero {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInCards {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-soft {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-strong {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }
