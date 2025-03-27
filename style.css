@@ -404,22 +404,24 @@ footer {
 
 
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-  }
-
   .menu-toggle {
     display: block;
+   
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    display: none;
   }
 
   .nav-links.show {
     display: flex;
     flex-direction: row;
-    gap: 15px;    
+    gap: 10px;
   }
 }
+
 
 @media (max-width: 480px) {
   .radio-group {
